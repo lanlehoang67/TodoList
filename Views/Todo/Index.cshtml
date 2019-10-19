@@ -1,0 +1,29 @@
+@using TodoApp.Models.Entities;
+@model List<TodoItem>
+@{
+    ViewData["Title"] = "Index";
+    var todos = new List<TodoItem>();
+    todos = Model;
+}
+    
+@{
+    <!-- ViewData["Title"] = "Index"; -->
+}
+<h1 class="text-center">Todo Page</h1>
+<a asp-action="create">New Item</a>
+<ul>
+    @{
+        foreach(var item in todos){
+            
+            <li style="display: flex;">
+                <input type="checkbox"/ checked=@item.IsCompleted>
+                @item.Name
+                <a style="margin-left: 20px" asp-action="edit" asp-route-id="@item.Id">Edit</a>
+                <form style="margin-left: 20px" asp-action="delete" method="post" asp-route-id="@item.Id">
+                    <button>Delete</button>
+                </form>
+            </li>
+            
+        }
+    }
+</ul>

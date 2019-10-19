@@ -1,0 +1,10 @@
+@model TodoApp.Models.Entities.TodoItem
+@{
+    ViewData["Title"] = "Todo page";
+}
+<h1 class="text-center">Update todo item</h1>
+<form asp-controller="Todo" asp-route-id="@Model.Id" asp-action="Update" method="POST">
+    <input type="checkbox" name="isCompleted" checked="@Model.IsCompleted" value="@Model.IsCompleted.ToString()"/>
+    <input type="text" name="Name" value="@Model.Name"/>
+    <input type="submit" value="Update">
+</form>
